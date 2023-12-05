@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+    <a href="/shows"> Go BACK</a>
+    <h1> Edit show {{   .id}}</h1>
+    <form action="/route1/{{edit.id}}" method="POST">
+        {% csrf_token %}
+        <p> Title :<input type="text" name="ttname" > </p>
+        Network :<input type="text" name="nett" >
+       Release date :<input type="date" name="releasedatee" >
+        <p> Description : <input type="text" name="descr" ></p>
+        <input type="submit" value="Update">
+         <p><a href="/shows/{{edit.id}}"> Go To show </a></p>
+</body>
+</html>
